@@ -1,0 +1,19 @@
+{
+    "name": "better-chesscom",
+    "module": "index.ts",
+    "version": "1.0.0",
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "scripts": {
+        "build": "bun scripts/build.ts"
+    },
+    "type": "module",
+    "dependencies": {
+        "@types/archiver": "^6.0.3",
+        "archiver": "^7.0.1"
+    }
+}

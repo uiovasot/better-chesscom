@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Better Chess.com",
+  "version": "1.0.0",
+  "description": "Make chess.com better",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.chess.com/*",
+        "http://*.chess.com/*"
+      ],
+      "js": [
+        "index.js"
+      ]
+    }
+  ]
+}
