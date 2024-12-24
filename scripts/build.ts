@@ -3,6 +3,7 @@ import path from 'path';
 import {createWriteStream} from 'fs';
 import archiver from 'archiver';
 import {version} from '../package.json';
+import cssLoader from './loaders/cssLoader';
 
 const folderPath = path.join('./src/plugins');
 
@@ -36,6 +37,7 @@ await Bun.build({
 ╚═════╝ ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝     ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝                                                                                                               
 Better Chess.com
 */`,
+    plugins: [cssLoader],
 });
 
 const build = await fs.readFile('./build/index.js', 'utf8');

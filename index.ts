@@ -1,6 +1,7 @@
 import plugins from './src/plugins';
 import {Logger} from './src/utils/logger';
 import {Toast} from './src/components/toast';
+import {getDisabledPluginsList} from '@utils/plugin';
 
 function run() {
     if (!window.location.host.endsWith('chess.com')) return;
@@ -20,7 +21,11 @@ function run() {
         }
     }
 
+    const disabledPluginsList = getDisabledPluginsList();
+
     for (const plugin of plugins) {
+        if (disabledPluginsList.includes(plugin.name)) continue;
+
         for (const {trigger, handler} of plugin.paths) {
             if (trigger(window.location.pathname)) {
                 handler(window.location.pathname);

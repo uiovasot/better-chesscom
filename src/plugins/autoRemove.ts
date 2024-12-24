@@ -1,8 +1,8 @@
 import {fetchAndDeleteForms} from '../api/fetchAndDeleteForms';
 import {Modal} from '../components/modal';
 import type {Plugin} from '../types/plugin';
-import {addCSS} from '../utils/addCSS';
 import {addToast} from '../utils/toast';
+import '@css/removePageComponent.css';
 
 export default {
     name: 'AutoRemoveComments',
@@ -15,23 +15,10 @@ export default {
                 return path.startsWith('/clubs/forum/view/');
             },
             handler() {
-                addCSS(`
-                    .forums-single-sort-pagination-wrap {
-                        flex-direction: row;
-                    }
-
-                    .remove-page-component {
-                        color: var(--color-text-default);
-                        cursor: pointer;
-                    }
-                        
-                    .remove-page-component:hover {
-                        color: var(--color-text-default-hovered)
-                    }`);
-
-                const wrap = document.querySelector('.forums-single-sort-pagination-wrap') as HTMLDivElement;
-                const button = document.createElement('span');
-                button.className = 'remove-page-component';
+                const wrap = document.createElement('div');
+                wrap.className = 'remove-page-component';
+                const button = document.createElement('button');
+                button.className = 'ui_pagination-item-component';
                 button.innerText = '페이지 삭제하기';
 
                 button.onclick = () => {
@@ -50,6 +37,9 @@ export default {
                 };
 
                 wrap.appendChild(button);
+
+                const targetElement = document.querySelector('.forums-single-sharing.forums-single-sharing-transparent') as HTMLDivElement;
+                targetElement.parentNode!.insertBefore(wrap, targetElement);
             },
         },
     ],
