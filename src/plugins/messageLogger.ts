@@ -102,10 +102,12 @@ export default {
                         body.innerHTML = comment.content;
                         deletedCommentElement.appendChild(body);
 
-                        const firstNonDeletedComment = nonDeletedComments[0];
-                        if (firstNonDeletedComment) {
-                            firstNonDeletedComment.parentNode?.insertBefore(deletedCommentElement, firstNonDeletedComment.nextSibling);
+                        const lastNonDeletedComment = nonDeletedComments[nonDeletedComments.length - 1];
+                        if (lastNonDeletedComment) {
+                            lastNonDeletedComment.parentNode?.insertBefore(deletedCommentElement, lastNonDeletedComment.nextSibling);
                         }
+
+                        nonDeletedComments.push(deletedCommentElement);
                     } else {
                         if (commentElement) {
                             nonDeletedComments.push(commentElement);
