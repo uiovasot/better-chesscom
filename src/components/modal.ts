@@ -32,18 +32,19 @@ export class Modal {
         const cancelButton = document.createElement('button');
         cancelButton.className = 'cc-button-component cc-button-secondary cc-button-medium cc-button-min-width';
         cancelButton.type = 'button';
-        cancelButton.textContent = '취소';
+        cancelButton.textContent = 'Cancel';
         cancelButton.addEventListener('click', () => this.close());
         buttonContainer.appendChild(cancelButton);
 
         const confirmButton = document.createElement('button');
         confirmButton.className = 'cc-button-component cc-button-primary cc-button-medium cc-button-min-width';
         confirmButton.type = 'button';
-        confirmButton.textContent = '네';
+        confirmButton.textContent = 'Ok';
         confirmButton.addEventListener('click', () => {
             if (this.onConfirm) {
                 this.onConfirm();
             }
+
             this.close();
         });
         buttonContainer.appendChild(confirmButton);

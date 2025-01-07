@@ -5,9 +5,9 @@ import {Tooltip} from '@components/tooltip';
 import '@css/setting.css';
 
 export default {
-    name: 'AddSetting',
+    name: '[System] AddSetting',
     author: [],
-    description: '설정을 추가합니다.',
+    description: 'Add settings.',
     version: '1.0.0',
     system: true,
     paths: [

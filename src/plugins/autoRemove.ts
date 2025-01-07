@@ -7,27 +7,29 @@ import '@css/removePageComponent.css';
 export default {
     name: 'AutoRemoveComments',
     author: [],
-    description: '자동으로 댓글을 지워줍니다.',
+    description: 'Automatically deletes comments on that page.',
     version: '1.0.0',
     paths: [
         {
             trigger(path) {
-                return path.startsWith('/clubs/forum/view/');
+                const isMatch = /^(\/[a-z]{2})?\/clubs\/forum\/view\//.test(path);
+
+                return isMatch;
             },
             handler() {
                 const wrap = document.createElement('div');
                 wrap.className = 'remove-page-component';
                 const button = document.createElement('button');
                 button.className = 'ui_pagination-item-component';
-                button.innerText = '페이지 삭제하기';
+                button.innerText = 'Delete page';
 
                 button.onclick = () => {
-                    const modal = new Modal('이 페이지를 정말로 삭제할까요?', async () => {
+                    const modal = new Modal('Are you sure you want to delete this page?', async () => {
                         await fetchAndDeleteForms(window.location.href);
 
                         addToast({
                             type: 'success',
-                            message: '페이지 삭제가 완료되었습니다.',
+                            message: 'Page deletion has been completed.',
                         });
 
                         history.go(0);

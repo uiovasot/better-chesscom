@@ -27,8 +27,12 @@ function run() {
         if (disabledPluginsList.includes(plugin.name)) continue;
 
         for (const {trigger, handler} of plugin.paths) {
-            if (trigger(window.location.pathname)) {
-                handler(window.location.pathname);
+            try {
+                if (trigger(window.location.pathname)) {
+                    handler(window.location.pathname);
+                }
+            } catch (err) {
+                Logger.error(('Plugin ' + plugin.name + 'error: ' + err) as string);
             }
         }
     }

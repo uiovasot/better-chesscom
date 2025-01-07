@@ -5,7 +5,7 @@ import {fetchAndDeleteForms} from '@api/fetchAndDeleteForms';
 export default {
     name: 'AddConsoleApi',
     author: [],
-    description: '콘솔에 유용한 함수를 추가합니다.',
+    description: 'Adds useful functions to the console.',
     version: '1.0.0',
     paths: [
         {
@@ -26,7 +26,7 @@ export default {
                     }
 
                     public async addComment({message, following = true}: {message: string; following?: boolean}) {
-                        if (!this.token) throw new Error('먼저 init를 해야 합니다.');
+                        if (!this.token) throw new Error('You need to init first.');
 
                         return await addComment(this.url, this.token, message, following);
                     }
