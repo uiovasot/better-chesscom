@@ -9,5 +9,7 @@ import Plugin2 from './plugins/messageLogger.ts';
 exports.push(Plugin2 as Plugin);
 import Plugin3 from './plugins/addSetting.ts';
 exports.push(Plugin3 as Plugin);
+import Plugin4 from './plugins/autoForumFollow.ts';
+exports.push(Plugin4 as Plugin);
 
 export default exports;

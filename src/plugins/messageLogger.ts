@@ -1,12 +1,27 @@
 import {Forum} from '@parse/forum';
 import type {Plugin} from '../types/plugin';
 import {htmlEncode} from '@utils/htmlEncode';
+import {clearIndexedDB} from '@utils/indexedDB';
+import {Toast} from '@components/toast';
 
 export default {
     name: 'MessageLogger',
     author: [],
     description: 'Message logger.',
     version: '1.0.0',
+    settings: {
+        removeHistory: {
+            type: 'button',
+            label: 'Clear',
+            onClick: async () => {
+                await clearIndexedDB('ForumCommentsDB', 'comments');
+
+                const toast = new Toast('All message history has been deleted!', 'success');
+
+                toast.show();
+            },
+        },
+    },
     paths: [
         {
             trigger(path) {
@@ -22,6 +37,9 @@ export default {
                 const forum = new Forum(id);
 
                 await forum.parseAndUpdateComments(rootElement);
+
+                // @ts-ignore
+                window.forum = forum;
 
                 const nonDeletedComments: HTMLElement[] = [];
 

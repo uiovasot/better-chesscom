@@ -24,7 +24,8 @@ function run() {
     const disabledPluginsList = getDisabledPluginsList();
 
     for (const plugin of plugins) {
-        if (disabledPluginsList.includes(plugin.name)) continue;
+        if (disabledPluginsList[plugin.name] === true) continue;
+        if (disabledPluginsList[plugin.name] === undefined && plugin.defaultDisabled) continue;
 
         for (const {trigger, handler} of plugin.paths) {
             try {

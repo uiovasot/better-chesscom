@@ -1,4 +1,5 @@
 import {Logger} from '@utils/logger';
+import {processHTML} from '@utils/processHTML';
 
 interface CommentData {
     id: string;
@@ -129,7 +130,7 @@ export class Forum {
             const id = element.id.replace('comment-', '');
             const username = element.querySelector('.user-tagline-username')?.textContent?.trim() || '';
             const avatarUrl = element.querySelector('.post-view-meta-image')?.getAttribute('data-src') || '';
-            const content = element.querySelector('.comment-post-body')?.innerHTML || '';
+            const content = processHTML(element.querySelector('.comment-post-body')?.innerHTML || '');
             const timestamp = element.querySelector('.comment-post-actions-time span')?.getAttribute('title') || '';
             const voteCount = parseInt(element.querySelector('.vote-container-count')?.textContent || '0', 10);
 

@@ -1,6 +1,7 @@
-import {addComment, getCommentToken} from '@api/addComment';
 import type {Plugin} from '../types/plugin';
+import {addComment, getCommentToken} from '@api/addComment';
 import {fetchAndDeleteForms} from '@api/fetchAndDeleteForms';
+import {trackForum} from '@api/trackForum';
 
 export default {
     name: 'AddConsoleApi',
@@ -33,6 +34,10 @@ export default {
 
                     public async removePage(url: string = window.location.href) {
                         await fetchAndDeleteForms(url);
+                    }
+
+                    public async trackForum(forumId: string, bool: boolean) {
+                        await trackForum(forumId, bool);
                     }
                 }
 

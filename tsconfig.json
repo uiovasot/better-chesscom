@@ -26,6 +26,7 @@
         "paths": {
             "@css/*": ["./src/css/*"],
             "@api/*": ["./src/api/*"],
+            "@data/*": ["./src/data/*"],
             "@parse/*": ["./src/parse/*"],
             "@components/*": ["./src/components/*"],
             "@types/*": ["./src/types/*"],
