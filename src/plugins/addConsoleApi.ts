@@ -1,7 +1,7 @@
 import type {Plugin} from '../types/plugin';
-import {addComment, getCommentToken} from '@api/addComment';
-import {fetchAndDeleteForms} from '@api/fetchAndDeleteForms';
-import {trackForum} from '@api/trackForum';
+import {addComment, getCommentToken} from '@/api/addComment';
+import {fetchAndDeleteForms} from '@/api/fetchAndDeleteForms';
+import {trackForum} from '@/api/trackForum';
 
 export default {
     name: 'AddConsoleApi',

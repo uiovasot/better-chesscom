@@ -1,4 +1,4 @@
-import {trackForum} from '@api/trackForum';
+import {trackForum} from '@/api/trackForum';
 import type {Plugin} from '../types/plugin';
 
 export default {

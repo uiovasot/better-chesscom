@@ -1,8 +1,9 @@
-import {Forum} from '@parse/forum';
+import {Forum} from '@/parse/forum';
 import type {Plugin} from '../types/plugin';
-import {htmlEncode} from '@utils/htmlEncode';
-import {clearIndexedDB} from '@utils/indexedDB';
-import {Toast} from '@components/toast';
+import {htmlEncode} from '@/utils/htmlEncode';
+import {clearIndexedDB} from '@/utils/indexedDB';
+import {Toast} from '@/components/toast';
+import {getPluginSetting} from '@/utils/plugin';
 
 export default {
     name: 'MessageLogger',
@@ -21,6 +22,12 @@ export default {
                 toast.show();
             },
         },
+        showRevisionHistory: {
+            type: 'switch',
+            label: 'Show revision history',
+            default: false,
+            description: 'Show revision history of messages. This feature has many bugs so we do not recommend using it.',
+        },
     },
     paths: [
         {
@@ -37,6 +44,8 @@ export default {
                 const forum = new Forum(id);
 
                 await forum.parseAndUpdateComments(rootElement);
+
+                const showRevisionHistory = getPluginSetting('MessageLogger', 'showRevisionHistory', false) as boolean;
 
                 // @ts-ignore
                 window.forum = forum;
@@ -132,7 +141,7 @@ export default {
                         }
                     }
 
-                    if (comment.versions.length > 0 && !comment.deleted) {
+                    if (comment.versions.length > 0 && !comment.deleted && showRevisionHistory) {
                         const body = commentElement.querySelector('.comment-post-body') as HTMLElement;
                         if (body) {
                             comment.versions.forEach((version) => {

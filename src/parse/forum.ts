@@ -1,5 +1,5 @@
-import {Logger} from '@utils/logger';
-import {processHTML} from '@utils/processHTML';
+import {Logger} from '@/utils/logger';
+import {processHTML} from '@/utils/processHTML';
 
 interface CommentData {
     id: string;

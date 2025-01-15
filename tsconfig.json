@@ -24,13 +24,13 @@
         "noUnusedParameters": false,
         "noPropertyAccessFromIndexSignature": false,
         "paths": {
-            "@css/*": ["./src/css/*"],
-            "@api/*": ["./src/api/*"],
-            "@data/*": ["./src/data/*"],
-            "@parse/*": ["./src/parse/*"],
-            "@components/*": ["./src/components/*"],
-            "@types/*": ["./src/types/*"],
-            "@utils/*": ["./src/utils/*"]
+            "@/css/*": ["./src/css/*"],
+            "@/api/*": ["./src/api/*"],
+            "@/data/*": ["./src/data/*"],
+            "@/parse/*": ["./src/parse/*"],
+            "@/components/*": ["./src/components/*"],
+            "@/types/*": ["./src/types/*"],
+            "@/utils/*": ["./src/utils/*"]
         }
     }
 }

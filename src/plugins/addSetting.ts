@@ -1,8 +1,8 @@
-import {activatePlugin, disablePlugin, getDisabledPluginsList, savePluginSetting, getPluginSetting} from '@utils/plugin';
+import {activatePlugin, disablePlugin, getDisabledPluginsList, savePluginSetting, getPluginSetting} from '@/utils/plugin';
 import plugins from '../plugins';
 import type {Plugin} from '../types/plugin';
-import {Tooltip} from '@components/tooltip';
-import '@css/setting.css';
+import {Tooltip} from '@/components/tooltip';
+import '@/css/setting.css';
 
 export default {
     name: '[System] AddSetting',
@@ -135,7 +135,9 @@ export default {
                     section.appendChild(divider);
 
                     for (const plugin of plugins) {
-                        if (plugin.settings && Object.keys(plugin.settings).length > 0) {
+                        const disabled = disabledPluginsList[plugin.name] === true || (disabledPluginsList[plugin.name] === undefined && plugin.defaultDisabled);
+
+                        if (plugin.settings && Object.keys(plugin.settings).length > 0 && !disabled) {
                             const pluginSettingsTitle = document.createElement('h2');
                             pluginSettingsTitle.className = 'settings-category-subtitle';
                             pluginSettingsTitle.textContent = plugin.name;

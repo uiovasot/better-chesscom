@@ -1,4 +1,4 @@
-import '@css/toast.css';
+import '@/css/toast.css';
 
 export class Toast {
     private message: string;

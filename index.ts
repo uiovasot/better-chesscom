@@ -1,7 +1,7 @@
 import plugins from './src/plugins';
 import {Logger} from './src/utils/logger';
 import {Toast} from './src/components/toast';
-import {getDisabledPluginsList} from '@utils/plugin';
+import {getDisabledPluginsList} from '@/utils/plugin';
 
 function run() {
     if (!window.location.host.endsWith('chess.com')) return;

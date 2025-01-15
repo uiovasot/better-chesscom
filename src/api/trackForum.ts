@@ -1,4 +1,4 @@
-import {token} from '@data/csrfToken';
+import {token} from '@/data/csrfToken';
 
 export async function trackForum(forumId: string, bool: boolean) {
     await fetch(`https://www.chess.com/callback/track-content/forum/${forumId}/${bool}`, {

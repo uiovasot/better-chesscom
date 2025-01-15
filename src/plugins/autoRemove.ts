@@ -2,7 +2,7 @@ import {fetchAndDeleteForms} from '../api/fetchAndDeleteForms';
 import {Modal} from '../components/modal';
 import type {Plugin} from '../types/plugin';
 import {addToast} from '../utils/toast';
-import '@css/removePageComponent.css';
+import '@/css/removePageComponent.css';
 
 export default {
     name: 'AutoRemoveComments',
