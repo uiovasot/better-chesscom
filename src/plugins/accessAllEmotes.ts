@@ -15,7 +15,7 @@ export default {
                 return isMatch;
             },
             async handler(path) {
-                const res = await fetch(path);
+                const res = await fetch(window.location.href);
 
                 const html = await res.text();
 
@@ -59,7 +59,6 @@ export default {
                                                 const token = comments.get(comment)!;
 
                                                 await reaction(token, name, false);
-                                                console.log(token);
                                             });
                                         });
                                     });
